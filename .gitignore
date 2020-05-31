@@ -105,3 +105,6 @@ dist
 
 # Custom
 basias-fichiers-regionaux.7z
+Result
+.DS_Store
+*.pyc
