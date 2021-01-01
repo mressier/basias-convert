@@ -36,7 +36,7 @@ function updateGeoJSONCoordinatesWithCSV(geoJsonObjects, boards) {
         } else {
             planche["geometry"]["coordinates"] = board.shapeLambertCoordinates()
         }
-        
+
     }
 
     return geoJsonObjects

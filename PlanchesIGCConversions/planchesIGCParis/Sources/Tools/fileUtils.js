@@ -17,6 +17,15 @@ function writeToFile(filePath, content) {
     }
 }
 
+function createDirectory(directoryPath) {
+    if (fs.existsSync(directoryPath)) {
+      return true
+    }
+
+    fs.mkdirSync(directoryPath)
+    return true
+}
+
 function appendToFile(filePath, content) {
     try {
         fs.appendFileSync(filePath, content)
@@ -28,3 +37,4 @@ function appendToFile(filePath, content) {
 exports.readFile = readFile
 exports.writeToFile = writeToFile
 exports.appendToFile = appendToFile
+exports.createDirectory = createDirectory

@@ -13,16 +13,17 @@ function createCSVObject(keys, content) {
     return object
 }
 
-function createCSVObjects(csvFilename, separator = ";") {
+function createCSVObjects(csvFilename, separator = ";", lineSeparator = "\r\n") {
     let csvContent = readFile(csvFilename)
 
-    let lines = csvContent.split("\r\n")
+    let lines = csvContent.split(lineSeparator)
     let keys = lines[0].split(separator)
 
-    let objects = lines.map(
+    let content = lines.slice(1).filter(element => element != "")
+    let objects = content.map(
         element => createCSVObject(keys, element.split(separator))
     )
-    
+
     return objects
 }
 
