@@ -2,7 +2,6 @@ var { GeorefPoints } = require('./GeorefPoints')
 
 class FileConfig {
   constructor(object) {
-    // this.path = object["path"]
     this.folder = object["folder"]
     this.planche = object["planche"]
     this.filename = object["file"]
