@@ -5,6 +5,7 @@ function readFile(filePath) {
         return fs.readFileSync(filePath, 'utf8');
     }
     catch (error) {
+        console.error(error); 
         return null;
     }
 }
