@@ -38,8 +38,6 @@ const completeGeorefPointsOnFiles = georefPointsOnFiles.map(
     )
 );
 
-console.log(completeGeorefPointsOnFiles);
-
 completeGeorefPointsOnFiles.forEach((item, i) => {
   objectsToCSV(item.file, item.points, ',');
 });
