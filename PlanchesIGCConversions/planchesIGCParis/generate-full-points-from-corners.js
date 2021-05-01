@@ -1,10 +1,12 @@
 var { createCSVObjects } = require('./Sources/Convert/csvFileToObjects');
-var { MapConfig, FullPixelConfig } = require('./Sources/Models/PixelConfig');
+var { FullPixelConfig } = require('./Sources/Models/PixelConfig');
+var { MapConfig } = require('./Sources/Models/MapConfig');
 var { GeorefPoints } = require('./Sources/Models/GeorefPoints');
 var { objectsToCSV } = require('./Sources/Convert/objectsToCSVFile');
 
-const files = process.argv.slice(2);
+// Get a list of .tif.points files in input for which generate more points to georef
 
+const files = process.argv.slice(2);
 console.log(files);
 
 const georefPointsOnFiles = files.map(file => {
@@ -19,22 +21,14 @@ const completeGeorefPointsOnFiles = georefPointsOnFiles.map(
     new GeorefPoints(
       fileContent.file,
       null,
-      (pixel = new FullPixelConfig({
-        'top-left-pixelX': fileContent.points[0].pixelX,
-        'top-left-pixelY': fileContent.points[0].pixelY,
-        'top-right-pixelX': fileContent.points[1].pixelX,
-        'top-right-pixelY': fileContent.points[1].pixelY,
-        'bottom-left-pixelX': fileContent.points[2].pixelX,
-        'bottom-left-pixelY': fileContent.points[2].pixelY,
-        'bottom-right-pixelX': fileContent.points[3].pixelX,
-        'bottom-right-pixelY': fileContent.points[3].pixelY
-      })),
-      (map = new MapConfig(
+      new FullPixelConfig()
+        .initWithGeorefPointList(fileContent.points),
+      new MapConfig(
         fileContent.points[0].mapX,
         fileContent.points[0].mapY,
         fileContent.points[3].mapX,
         fileContent.points[3].mapY
-      ))
+      )
     )
 );
 

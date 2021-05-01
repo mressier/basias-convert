@@ -23,17 +23,18 @@ class FullPixelConfig {
     this.bottomRightPixelX = parseFloat(object["bottom-right-pixelX"])
     this.bottomRightPixelY = parseFloat(object["bottom-right-pixelY"])
   }
-}
 
-class MapConfig {
-    constructor(topLeftPixelX, topLeftPixelY, bottomRightPixelX, bottomRightPixelY) {
-      this.topLeftPixelX = parseInt(topLeftPixelX)
-      this.topLeftPixelY = parseInt(topLeftPixelY)
-      this.bottomRightPixelX = parseInt(bottomRightPixelX)
-      this.bottomRightPixelY = parseInt(bottomRightPixelY)
-    }
+  initWithGeorefPointList(points) {
+    this.topLeftPixelX = points[0].pixelX,
+    this.topLeftPixelY = points[0].pixelY,
+    this.topRightPixelX = points[1].pixelX,
+    this.topRightPixelY = points[1].pixelY,
+    this.bottomLeftPixelX = points[2].pixelX,
+    this.bottomLeftPixelY = points[2].pixelY,
+    this.bottomRightPixelX = points[3].pixelX,
+    this.bottomRightPixelY = points[3].pixelY
+  }
 }
 
 exports.PixelConfig = PixelConfig
 exports.FullPixelConfig = FullPixelConfig
-exports.MapConfig = MapConfig

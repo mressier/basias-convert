@@ -150,3 +150,4 @@ class GeorefPoint {
 }
 
 exports.GeorefPoints = GeorefPoints;
+exports.GeorefPoint = GeorefPoint;
